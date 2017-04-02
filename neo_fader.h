@@ -2,8 +2,9 @@
 #define NEO_FADER_H
 
 #include <Adafruit_NeoPixel.h>
+#include "runnable.h"
 
-class NeoFader {
+class NeoFader : public Runnable {
   public:
     NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration);
     void run();

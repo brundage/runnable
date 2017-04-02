@@ -1,7 +1,7 @@
 #include "led_flasher.h"
+#include <Arduino.h>
 
-LEDFlasher::LEDFlasher( uint8_t ledPin, unsigned long onDuration, unsigned long offDuration ) :
-                        pin(ledPin), onIntervalMs(onDuration), offIntervalMs(offDuration) {
+LEDFlasher::LEDFlasher( uint8_t ledPin, unsigned long onDuration, unsigned long offDuration ) : Runnable(), pin(ledPin), onIntervalMs(onDuration), offIntervalMs(offDuration) {
    prevTimeMs = 0;
    isOn = false;
 }

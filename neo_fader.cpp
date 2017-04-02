@@ -1,7 +1,7 @@
 #include "neo_fader.h"
 #include "rgbw.h"
 
-NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration) : color(color) {
+NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration) : Runnable(), color(color) {
   goingForward = true;
   index = 128;
   pixels = Adafruit_NeoPixel(numPixels, pin, NEO_RGB+NEO_KHZ800);

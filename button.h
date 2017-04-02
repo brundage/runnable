@@ -1,7 +1,9 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-class Button {
+#include "runnable.h"
+
+class Button : public Runnable {
   public:
     Button(uint8_t pin);
     void run();

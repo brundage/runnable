@@ -5,13 +5,14 @@
  * Authors:
  *  - Dean Brundage https://github.com/brundage
 
-######   #     #  #######  #######  #######  #     #
-#     #  #     #     #        #     #     #  ##    #
-#     #  #     #     #        #     #     #  # #   #
-######   #     #     #        #     #     #  #  #  #
-#     #  #     #     #        #     #     #  #   # #
-#     #  #     #     #        #     #     #  #    ##
-######    #####      #        #     #######  #     #
+   _________ 
+  < Run cow >
+   --------- 
+          \   ^__^
+           \  (oo)\_______
+              (__)\       )\/\
+                  ||----w |
+                  ||     ||
 
 */
 
@@ -21,18 +22,15 @@
 #include "neo_wheel.h"
 
 const LEDFlasher led(7, 150, 2000);
-const NeoFader   neo(8, 1, 0xFF00FF, 8000);
+//const NeoFader   neo(8, 1, 0xBF18A8, 1500);
+const NeoWheel   neo(8, 1, 1500);
 const Button  button(10);
 
 void setup() {
-  button.setup();
-  led.setup();
-  neo.setup();
+  Runnable::setupAll();
 }
 
 
 void loop() {
-  button.run();
-//  led.run();
-  neo.run();
+  Runnable::runAll();
 }

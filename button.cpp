@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "button.h"
 
-Button::Button(uint8_t pin) : pin(pin) {
+Button::Button(uint8_t pin) : Runnable(), pin(pin) {
   buttonDownMs = 0;
   state = HIGH;
 }

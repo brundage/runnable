@@ -1,6 +1,6 @@
 #include "neo_wheel.h"
 
-NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) {
+NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) : Runnable() {
   index = 0;
   pixels = Adafruit_NeoPixel(numPixels, pin, NEO_RGB+NEO_KHZ800);
   prevTimeMs = 0;

@@ -2,8 +2,9 @@
 #define NEO_WHEEL_H
 
 #include <Adafruit_NeoPixel.h>
+#include "runnable.h"
 
-class NeoWheel {
+class NeoWheel : public Runnable {
   public:
     NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration);
     void run();
