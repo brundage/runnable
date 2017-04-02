@@ -16,15 +16,18 @@
 */
 
 #include "led_flasher.h"
+#include "neo_wheel.h"
 
 const LEDFlasher flasher = LEDFlasher(7, 150, 2000);
-
+const NeoWheel wheel = NeoWheel(8, 1, 8000);
 
 void setup() {
-  flasher.setup();  
+  flasher.setup();
+  wheel.setup();
 }
 
 
 void loop() {
   flasher.run();
+  wheel.run();
 }
