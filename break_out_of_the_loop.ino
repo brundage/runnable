@@ -5,29 +5,32 @@
  * Authors:
  *  - Dean Brundage https://github.com/brundage
 
-   _____________
-  < LED flasher >
-   ------------- 
+   ____________ 
+  < Neo Pixels >
+   ------------ 
           \   ^__^
-           \  (oo)\_______
+           \  (@@)\_______
               (__)\       )\/\
                   ||----w |
                   ||     ||
 */
 
 #include "led_flasher.h"
+#include "neo_fader.h"
 #include "neo_wheel.h"
 
-const LEDFlasher flasher = LEDFlasher(7, 150, 2000);
-const NeoWheel wheel = NeoWheel(8, 1, 8000);
+const LEDFlasher led = LEDFlasher(7, 150, 2000);
+const NeoFader   neo = NeoFader(8, 1, 0xFF00FF, 8000);
+
 
 void setup() {
-  flasher.setup();
-  wheel.setup();
+  Serial.begin(9600);
+  led.setup();
+  neo.setup();
 }
 
 
 void loop() {
-  flasher.run();
-  wheel.run();
+  led.run();
+  neo.run();
 }
