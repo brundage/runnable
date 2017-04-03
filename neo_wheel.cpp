@@ -1,25 +1,17 @@
 #include "neo_wheel.h"
 
-NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) : Runnable(), NeoController(pin, numPixels) {
-  index = 0;
-  prevTimeMs = 0;
-  updateIntervalMs = duration / steps;
+NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) : NeoController(pin, numPixels), PeriodicEffect(duration, 255) {
 }
 
 
-void NeoWheel::run() {
-  unsigned long currentTime = millis();
-  unsigned long interval = currentTime - prevTimeMs;
-  if( interval >= updateIntervalMs ) {
-    setColor( wheel(index) );
-    index = (index + 1) % steps;
-    prevTimeMs = currentTime;
-  }
+void NeoWheel::applyChange() {
+  uint8_t i = PeriodicEffect::index.getIndex();
+  setColor( wheel(i) );
 }
 
 
 void NeoWheel::setup() {
-  NeoController::setup();
+  NeoController::begin();
 }
 
 

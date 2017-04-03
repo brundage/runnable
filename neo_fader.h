@@ -2,24 +2,18 @@
 #define NEO_FADER_H
 
 #include "neo_controller.h"
-#include "runnable.h"
+#include "periodic_effect.h"
 
-class NeoFader : public NeoController, public Runnable {
+class NeoFader : public NeoController, public PeriodicEffect {
   public:
-    NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration);
-    void run();
+    NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, uint32_t duration);
     void setup();
 
   private:
-    Adafruit_NeoPixel pixels;
-    bool goingForward;
-    unsigned long prevTimeMs, updateIntervalMs;
-    uint8_t index;
     uint32_t color;
-    const uint8_t steps = 255;
 
+    void applyChange();
     uint32_t fade();
-    void increment();
 
 };
 

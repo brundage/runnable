@@ -1,52 +1,26 @@
 #include "neo_fader.h"
 #include "rgbw.h"
 
-NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration) : NeoController(pin, numPixels), Runnable(), color(color) {
-  goingForward = true;
-  index = 128;
-  prevTimeMs = 0;
-  updateIntervalMs = duration / steps;
+NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, uint32_t duration) : NeoController(pin, numPixels), PeriodicEffect(duration, 255, Counter::Mode::RETURNING), color(color) {
 }
 
 
-void NeoFader::run() {
-  unsigned long currentTime = millis();
-  unsigned long interval = currentTime - prevTimeMs;
-  if( interval >= updateIntervalMs ) {
-    setColor(fade());
-    increment();
-    prevTimeMs = currentTime;
-  }
+void NeoFader::applyChange() {
+  setColor(fade());
 }
 
 
 uint32_t NeoFader::fade() {
-  float percent = (float) index / (float) steps; 
-  uint8_t r = percent * RGBW::r(color);
-  uint8_t g = percent * RGBW::g(color);
-  uint8_t b = percent * RGBW::b(color);
-  uint8_t w = percent * RGBW::w(color);
+  Counter i = PeriodicEffect::index;
+  float p = i.percent();
+  uint8_t r = p * RGBW::r(color);
+  uint8_t g = p * RGBW::g(color);
+  uint8_t b = p * RGBW::b(color);
+  uint8_t w = p * RGBW::w(color);
   return RGBW::color(r,g,b,w);
 }
 
 
-void NeoFader::increment() {
-  if( goingForward ) {
-    index++;
-    if( index >= steps ) {
-      index = steps - 1;
-      goingForward = false;
-    }
-  } else {
-    index--;
-    if( index <= 0 ) {
-      index = 1;
-      goingForward = true;
-    }
-  }
-}
-
-
 void NeoFader::setup() {
-  NeoController::setup();
+  NeoController::begin();
 }
