@@ -22,11 +22,12 @@
 #include "neo_wheel.h"
 
 const LEDFlasher led(7, 150, 2000);
-//const NeoFader   neo(8, 1, 0xBF18A8, 1500);
-const NeoWheel   neo(8, 1, 1500);
+const NeoFader   neo(8, 1, 0xBF18A8, 1500);
+//const NeoWheel   neo(8, 1, 1500);
 const Button  button(10);
 
 void setup() {
+  Serial.begin(9600);
   Runnable::setupAll();
 }
 

@@ -1,17 +1,16 @@
 #ifndef NEO_WHEEL_H
 #define NEO_WHEEL_H
 
-#include <Adafruit_NeoPixel.h>
+#include "neo_controller.h"
 #include "runnable.h"
 
-class NeoWheel : public Runnable {
+class NeoWheel : public Runnable, public NeoController {
   public:
     NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration);
     void run();
     void setup();
 
   private:
-    Adafruit_NeoPixel pixels;
     unsigned long prevTimeMs, updateIntervalMs;
     uint8_t index;
     const uint8_t steps = 255;

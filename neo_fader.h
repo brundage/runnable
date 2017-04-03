@@ -1,10 +1,10 @@
 #ifndef NEO_FADER_H
 #define NEO_FADER_H
 
-#include <Adafruit_NeoPixel.h>
+#include "neo_controller.h"
 #include "runnable.h"
 
-class NeoFader : public Runnable {
+class NeoFader : public NeoController, public Runnable {
   public:
     NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration);
     void run();
@@ -20,7 +20,6 @@ class NeoFader : public Runnable {
 
     uint32_t fade();
     void increment();
-    void setColor(uint32_t c);
 
 };
 

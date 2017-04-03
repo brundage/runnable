@@ -1,8 +1,7 @@
 #include "neo_wheel.h"
 
-NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) : Runnable() {
+NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) : Runnable(), NeoController(pin, numPixels) {
   index = 0;
-  pixels = Adafruit_NeoPixel(numPixels, pin, NEO_RGB+NEO_KHZ800);
   prevTimeMs = 0;
   updateIntervalMs = duration / steps;
 }
@@ -12,10 +11,7 @@ void NeoWheel::run() {
   unsigned long currentTime = millis();
   unsigned long interval = currentTime - prevTimeMs;
   if( interval >= updateIntervalMs ) {
-    for( int i = 0; i < pixels.numPixels(); i++ ) {
-      pixels.setPixelColor( i, wheel(index) );
-    }
-    pixels.show();
+    setColor( wheel(index) );
     index = (index + 1) % steps;
     prevTimeMs = currentTime;
   }
@@ -23,7 +19,7 @@ void NeoWheel::run() {
 
 
 void NeoWheel::setup() {
-  pixels.begin();
+  NeoController::setup();
 }
 
 

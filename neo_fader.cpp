@@ -1,10 +1,9 @@
 #include "neo_fader.h"
 #include "rgbw.h"
 
-NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration) : Runnable(), color(color) {
+NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, unsigned long duration) : NeoController(pin, numPixels), Runnable(), color(color) {
   goingForward = true;
   index = 128;
-  pixels = Adafruit_NeoPixel(numPixels, pin, NEO_RGB+NEO_KHZ800);
   prevTimeMs = 0;
   updateIntervalMs = duration / steps;
 }
@@ -48,16 +47,6 @@ void NeoFader::increment() {
 }
 
 
-void NeoFader::setColor(uint32_t c) {
-  for( int i = 0; i < pixels.numPixels(); i++ ) {
-    pixels.setPixelColor(i, c);
-  }
-  pixels.show();
-}
-
-
 void NeoFader::setup() {
-//  pixels.setBrightness(16);
-  pixels.begin();
-  setColor(color);
+  NeoController::setup();
 }
