@@ -2,18 +2,18 @@
 
 EffectManager::EffectManager(
   NeoFader *fader, NeoWheel *wheel, uint8_t buttonPin) :
-   Button(buttonPin), fader(fader), wheel(wheel), faderRunning(false) {
+   Button(buttonPin), fader(fader), wheel(wheel), faderRunning(true) {
   click();  // Initialize so the fader runs first
 }
 
 
 void EffectManager::click() {
-  faderRunning = ! faderRunning;
   if( faderRunning ) {
-    wheel->stop();
-    fader->start();
-  } else {
-    fader->stop();
     wheel->start();
+    fader->stop();
+  } else {
+    fader->start();
+    wheel->stop();
   }
+  faderRunning = ! faderRunning;
 }
