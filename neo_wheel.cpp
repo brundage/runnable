@@ -1,7 +1,8 @@
 #include "neo_wheel.h"
 
-NeoWheel::NeoWheel(uint8_t pin, uint16_t numPixels, unsigned long duration) : NeoController(pin, numPixels), PeriodicEffect(duration, 255) {
-}
+NeoWheel::NeoWheel(
+  uint8_t pin, uint16_t numPixels, unsigned long duration ) :
+   NeoController(pin, numPixels), PeriodicEffect(duration, 255) { }
 
 
 void NeoWheel::applyChange() {
@@ -10,9 +11,7 @@ void NeoWheel::applyChange() {
 }
 
 
-void NeoWheel::setup() {
-  NeoController::begin();
-}
+void NeoWheel::setup() { NeoController::begin(); }
 
 
 uint32_t NeoWheel::wheel(uint8_t pos) {

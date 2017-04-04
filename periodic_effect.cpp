@@ -1,8 +1,10 @@
 #include <Arduino.h>
 #include "periodic_effect.h"
 
-PeriodicEffect::PeriodicEffect( uint32_t durationMs, uint32_t periods, Counter::Mode mode) : Runnable(), index(periods, mode), intervalMs(durationMs/periods), periods(periods) {
-}
+PeriodicEffect::PeriodicEffect(
+  uint32_t durationMs, uint32_t periods, Counter::Mode mode ) :
+  Runnable(), index(periods, mode), intervalMs(durationMs/periods),
+  periods(periods) { }
 
 
 void PeriodicEffect::run() {

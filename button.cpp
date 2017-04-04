@@ -1,10 +1,8 @@
-#include <Arduino.h>
 #include "button.h"
+#include <Arduino.h>
 
-Button::Button(uint8_t pin) : Runnable(), pin(pin) {
-  buttonDownMs = 0;
-  state = HIGH;
-}
+Button::Button(uint8_t pin) :
+   Runnable(), buttonDownMs(0), pin(pin), state(HIGH) { }
 
 
 void Button::run() {
@@ -20,12 +18,10 @@ void Button::run() {
       // ignore debounce
     } else {
       // press
-      digitalWrite(7, ! digitalRead(7) );
+      click();
     }
   }
 }
 
 
-void Button::setup() {
-  pinMode(pin, INPUT);
-}
+void Button::setup() { pinMode(pin, INPUT); }

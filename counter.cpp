@@ -1,8 +1,8 @@
 #include "counter.h"
 
-Counter::Counter(uint32_t limit, Counter::Mode mode, uint32_t i) : index(i), limit(limit), mode(mode) {
-  goingForward = true;
-}
+Counter::Counter(
+  uint32_t limit, Counter::Mode mode, uint32_t index ) :
+  goingForward(true), index(index), limit(limit), mode(mode) { }
 
 
 uint32_t Counter::getIndex() {

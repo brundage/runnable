@@ -1,6 +1,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include "stdint.h"
 #include "runnable.h"
 
 class Button : public Runnable {
@@ -9,6 +10,8 @@ class Button : public Runnable {
     void run();
     void setup();
 
+  protected:
+    virtual void click() = 0;
 
   private:
     const uint8_t pin;

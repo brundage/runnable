@@ -1,8 +1,8 @@
 #ifndef PERIODIC_EFFECT_H
 #define PERIODIC_EFFECT_H
 
-#include "counter.h"
 #include "runnable.h"
+#include "counter.h"
 
 class PeriodicEffect : public Runnable {
 
@@ -17,7 +17,6 @@ class PeriodicEffect : public Runnable {
 
     virtual void applyChange() = 0;
     void run();
-    virtual void setup() = 0;
 };
 
 #endif

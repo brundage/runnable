@@ -1,10 +1,18 @@
 #include "runnable.h"
 
-Runnable::Runnable() {
+Runnable::Runnable() : running(true) {
   nextRunnable = headRunnable;
   headRunnable = this;
-  start();
 }
+
+
+static int Runnable::count() {
+  int c = 0;
+  Runnable *r = headRunnable;
+  while( r != nullptr ) {  c++; r = r->nextRunnable; }
+  return c;
+}
+  
 
 
 static void Runnable::setupAll() {
@@ -21,6 +29,7 @@ static void Runnable::runAll() {
     }
   }
 }
+
 
 bool Runnable::isRunning() { return running;  }
 void Runnable::start() { running = true;  }

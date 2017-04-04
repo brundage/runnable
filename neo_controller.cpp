@@ -1,8 +1,8 @@
 #include "neo_controller.h"
 
-NeoController::NeoController( uint8_t pin, uint32_t numPixels, uint8_t flags) {
-  pixels = Adafruit_NeoPixel(numPixels, pin, flags);
-}
+NeoController::NeoController(
+  uint8_t pin, uint32_t numPixels, uint8_t flags) :
+  pixels(Adafruit_NeoPixel(numPixels, pin, flags)) { }
 
 
 void NeoController::begin() {

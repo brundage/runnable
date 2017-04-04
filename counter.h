@@ -7,7 +7,7 @@
 class Counter {
   public:
     enum Mode { RESETTING, RETURNING };
-    Counter(uint32_t limit, Counter::Mode mode = RESETTING, uint32_t i = 0);
+    Counter(uint32_t limit, Counter::Mode mode = RESETTING, uint32_t index = 0);
 
     uint32_t getIndex();
     void increment();

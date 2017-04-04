@@ -1,8 +1,10 @@
 #include "neo_fader.h"
 #include "rgbw.h"
 
-NeoFader::NeoFader(uint8_t pin, uint16_t numPixels, uint32_t color, uint32_t duration) : NeoController(pin, numPixels), PeriodicEffect(duration, 255, Counter::Mode::RETURNING), color(color) {
-}
+NeoFader::NeoFader(
+  uint8_t pin, uint16_t numPixels, uint32_t color, uint32_t duration ) :
+  NeoController(pin, numPixels),
+  PeriodicEffect(duration, 255, Counter::Mode::RETURNING), color(color) { }
 
 
 void NeoFader::applyChange() {
@@ -21,6 +23,4 @@ uint32_t NeoFader::fade() {
 }
 
 
-void NeoFader::setup() {
-  NeoController::begin();
-}
+void NeoFader::setup() { NeoController::begin(); }
