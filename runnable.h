@@ -7,8 +7,6 @@ class Runnable {
     static void runAll();
     static void setupAll();
 
-    static int count();
-
     Runnable();
     bool isRunning();
     void start();

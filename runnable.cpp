@@ -6,15 +6,6 @@ Runnable::Runnable() : running(true) {
 }
 
 
-static int Runnable::count() {
-  int c = 0;
-  Runnable *r = headRunnable;
-  while( r != nullptr ) {  c++; r = r->nextRunnable; }
-  return c;
-}
-  
-
-
 static void Runnable::setupAll() {
   for( Runnable *r = headRunnable; r; r = r->nextRunnable ) {
     r->setup();
