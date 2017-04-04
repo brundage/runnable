@@ -24,7 +24,7 @@
 
 const LEDFlasher led(7, 150, 2000);
 const NeoFader fader = NeoFader(8, 1, 0xBF18A8, 1500);
-const NeoWheel wheel = NeoWheel(8, 1, 1500);
+const NeoWheel wheel = NeoWheel(8, 1, 5000);
 const EffectManager manager( &fader, &wheel, 10 );
 
 
