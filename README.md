@@ -20,7 +20,7 @@ Intermediate arduino programming using C++ classes
 # Further Reading
 
 * [Arduino the Object Way](http://paulmurraycbr.github.io/ArduinoTheOOWay.html)
-* Multi-tasking the Arduino [part 1](https://learn.adafruit.com/multi-tasking-the-arduino-part-1?view=all) [part 3](https://learn.adafruit.com/multi-tasking-the-arduino-part-3?view=all) (part 2 uses interrupts, not clock-watching)
+* Multi-tasking the Arduino [part 1](https://learn.adafruit.com/multi-tasking-the-arduino-part-1?view=all) & [part 3](https://learn.adafruit.com/multi-tasking-the-arduino-part-3?view=all) ([part 2](https://learn.adafruit.com/multi-tasking-the-arduino-part-2?view=all) uses interrupts, not clock-watching)
 
 # Authors
 
