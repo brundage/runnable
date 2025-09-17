@@ -6,14 +6,14 @@ Runnable::Runnable() : running(true) {
 }
 
 
-static void Runnable::setupAll() {
+void Runnable::setupAll() {
   for( Runnable *r = headRunnable; r; r = r->nextRunnable ) {
     r->setup();
   }
 }
 
 
-static void Runnable::runAll() {
+void Runnable::runAll() {
   for( Runnable *r = headRunnable; r; r = r->nextRunnable ) {
     if( r->isRunning() ) {
       r->run();
