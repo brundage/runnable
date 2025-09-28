@@ -10,13 +10,14 @@ uint32_t Counter::getIndex() {
 }
 
 
-void Counter::increment() {
+uint32_t Counter::increment() {
   switch( mode ) {
     case RESETTING : incrementResetting();
                      break;
     case RETURNING : incrementReturning();
                      break;
   }
+  return index;
 }
 
 

@@ -10,7 +10,7 @@ class Counter {
     Counter(uint32_t limit, Counter::Mode mode = RESETTING, uint32_t index = 0);
 
     uint32_t getIndex();
-    void increment();
+    uint32_t increment();
     float percent();
 
   private:
